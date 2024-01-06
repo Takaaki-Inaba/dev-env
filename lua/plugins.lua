@@ -182,11 +182,6 @@ require("telescope").setup({
 			"^.git/",
 			"^.cache/",
 		},
-		vimgrep_arguments = {
-			-- ripggrepコマンドのオプション
-			"rg",
-			"--smart-case",
-		},
 	},
 })
 local builtin = require('telescope.builtin')
