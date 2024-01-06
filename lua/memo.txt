@@ -1,0 +1,17 @@
+ターミナルソフト側にnerd-fontをインストールする必要がある。
+以下のサイトからHack Nerd Fontをダウンロードし、HackNerdFont-Regular.ttfを「C:\Windows\Fonts」にコピーする。
+https://www.nerdfonts.com/font-downloads
+ターミナルソフトの設定で使用するフォントを変更すれば完了。
+
+# plugin.luaの分割について
+https://homaju.hatenablog.com/entry/2023/11/11/201747
+https://github.com/Nyowa450/nvim/tree/coc
+
+# neovimを手動でコンパイルするとき
+sudo apt install gettext unzip g++ pkg-config libtool-bin
+git clone https://github.com/neovim/neovim.git
+git checkout -b v0.9.4 refs/tags/v0.9.4
+make CMAKE_BUILD_TYPE=RelWithDebInfo
+
+
+
