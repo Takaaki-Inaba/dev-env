@@ -1,6 +1,10 @@
 #!/bin/bash
 
-sudo apt install ripgrep clangd fd-find shellcheck g++
+sudo apt install ripgrep fd-find shellcheck g++
+
+# ubuntu20.04であればclangdが古いので、apt install clangd-12として、clangdへのシンボリックリンクを作る
+sudo apt install clangd
+
 mkdir -p ~/workspace/oss
 cd ~/workspace/oss
 wget https://github.com/neovim/neovim/releases/download/v0.9.5/nvim-linux64.tar.gz
