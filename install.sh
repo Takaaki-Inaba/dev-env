@@ -5,7 +5,7 @@ mkdir -p workspace/oss
 cd workspace/oss
 wget https://github.com/neovim/neovim/releases/download/v0.9.5/nvim-linux64.tar.gz
 tar xf nvim-linux64.tar.gz
-echo 'alias vi="/home/test/workspace/oss/nvim-linux64/bin/nvim"' >> ~/.bash_aliases
+echo 'alias vi="/home/${USER}/workspace/oss/nvim-linux64/bin/nvim"' >> ~/.bash_aliases
 rm nvim-linux64.tar.gz
 
 mkdir -p ~/.config/nvim
@@ -16,10 +16,9 @@ cp -r dev-env/lua ~/.config/nvim/
 
 
 # cocの設定
-sudo -i
-curl -sL install-node.vercel.app/lts | bash
+sudo curl -sL install-node.vercel.app/lts | bash
 # 危険なので、ローカル環境にインストールして、パスを追加するように変更
-ln -s /usr/local/bin/node /usr/bin/node
+sudo ln -s /usr/local/bin/node /usr/bin/node
 
 # nvim開いて、:CocInstall coc-clangd
 
