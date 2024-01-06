@@ -1,8 +1,8 @@
 #!/bin/bash
 
 sudo apt install ripgrep clangd fd-find shellcheck g++
-mkdir -p workspace/oss
-cd workspace/oss
+mkdir -p ~/workspace/oss
+cd ~/workspace/oss
 wget https://github.com/neovim/neovim/releases/download/v0.9.5/nvim-linux64.tar.gz
 tar xf nvim-linux64.tar.gz
 echo 'alias vi="/home/${USER}/workspace/oss/nvim-linux64/bin/nvim"' >> ~/.bash_aliases
