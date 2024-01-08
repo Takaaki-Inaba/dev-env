@@ -1,3 +1,4 @@
+# nvim-treeのアイコンを表示させるには
 ターミナルソフト側にnerd-fontをインストールする必要がある。
 以下のサイトからHack Nerd Fontをダウンロードし、HackNerdFont-Regular.ttfを「C:\Windows\Fonts」にコピーする。
 https://www.nerdfonts.com/font-downloads
@@ -13,5 +14,22 @@ git clone https://github.com/neovim/neovim.git
 git checkout -b v0.9.4 refs/tags/v0.9.4
 make CMAKE_BUILD_TYPE=RelWithDebInfo
 
+# 最新のclangのインストール方法
+wget https://apt.llvm.org/llvm.sh
+chmod u+x llvm.sh
+sudo ./llvm.sh 17 # clang-16を入れたいときは、17->16とかにする
 
+（アンインストール方法）
+sudo rm /etc/apt/sources.list.d/archive_uri-http_apt_llvm_org_*.list
+sudo rm /etc/apt/trusted.gpg.d/apt.llvm.org.asc
+sudo apt remove --autoremove clang-17 lldb-17 lld-17 clangd-17
+
+# cclsのインストール方法
+sudo snap install ccls --classic
+
+# coc-lspのログの確認方法
+https://hackmd.io/@kazuki-hanai/check-coc-ls-log
+
+# compile_commands.jsonにヘッダファイルの情報を含ませるやりかた
+https://qiita.com/s417-lama/items/942c4868f780f94bf0bb
 
