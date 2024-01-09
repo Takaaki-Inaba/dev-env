@@ -103,6 +103,10 @@ require("lazy").setup({
 	{'neoclide/coc.nvim', branch = 'release'},
 	{"HiPhish/rainbow-delimiters.nvim"},
 	{"jackguo380/vim-lsp-cxx-highlight"},
+	{
+			"davvid/telescope-git-grep.nvim",
+			branch = "main"
+	},                              
 })
 
 vim.cmd("let g:lightline = { 'colorscheme': 'moonfly' }")
@@ -185,9 +189,12 @@ require("telescope").setup({
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>f', builtin.find_files, {})
 vim.keymap.set('n', '<leader>r', builtin.live_grep, {})
-vim.keymap.set('n', '<leader>g', builtin.grep_string, {})
+-- vim.keymap.set('n', '<leader>g', builtin.grep_string, {})
 vim.keymap.set('n', '<leader>h', builtin.oldfiles, {})
-
+require('telescope').load_extension('git_grep')
+vim.keymap.set('n', '<leader>g', function()
+    require('git_grep').grep()
+end)
 
 -- toggletermの設定
 vim.keymap.set('n', '<leader><space>t', ':ToggleTerm size=20 direction=horizontal<CR>')
