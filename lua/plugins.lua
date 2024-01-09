@@ -101,6 +101,8 @@ require("lazy").setup({
 		config = true
 	},
 	{'neoclide/coc.nvim', branch = 'release'},
+	{"HiPhish/rainbow-delimiters.nvim"},
+	{"jackguo380/vim-lsp-cxx-highlight"},
 })
 
 vim.cmd("let g:lightline = { 'colorscheme': 'moonfly' }")
@@ -125,10 +127,6 @@ require("nvim-tree").setup({
 		sync = {
 			open = true,
 			close = true,
-		},
-	},
-	actions = {
-		open_file = {
 		},
 	},
 })
@@ -181,6 +179,11 @@ require("telescope").setup({
 			-- 検索から除外するものを指定
 			"^.git/",
 			"^.cache/",
+		},
+		vimgrep_arguments = {
+			-- ripggrepコマンドのオプション
+			"rg",
+			"--smart-case",
 		},
 	},
 })
@@ -354,4 +357,9 @@ end
 vim.keymap.set("n", "<space>h", '<CMD>lua _G.show_docs()<CR>', {silent = true})
 -- スペースfmでコードをformatting
 vim.keymap.set("n", "<space>fm", "<Plug>(coc-format-selected)", {silent = true})
+
+-- スペースdでdiagnosticを有効化
+vim.keymap.set("n", "<space>d", ":<C-u>call CocAction('diagnosticToggle')<CR>", {silent = true})
+
+
 
