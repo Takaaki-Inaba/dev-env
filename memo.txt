@@ -33,3 +33,17 @@ https://hackmd.io/@kazuki-hanai/check-coc-ls-log
 # compile_commands.jsonにヘッダファイルの情報を含ませるやりかた
 https://qiita.com/s417-lama/items/942c4868f780f94bf0bb
 
+# tmux環境下でカラー設定がうまくいかない場合
+以下のコマンドで綺麗なグラデーションが出力されないときは、tmuxのバージョンに問題があるかも。
+curl -s https://gist.githubusercontent.com/lifepillar/09a44b8cf0f9397465614e622979107f/raw/24-bit-color.sh | bash
+
+ubuntu 20.04の標準でインストールされるtmux（v3.0）だとカラースキームがおかしくなり、nvimのカラースキームがバグる。
+tmuxを3.2a（ubuntu22.04の標準）にすると問題が解消する。ビルド手順は以下。
+wget https://github.com/tmux/tmux/releases/download/3.2a/tmux-3.2a.tar.gz
+tar xf tmux-3.2a.tar.gz
+./configure
+make & sudo make install
+sudo ln -s /usr/local/bin/tmux /usr/bin/tmux
+
+
+
