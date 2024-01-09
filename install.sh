@@ -31,3 +31,5 @@ sudo snap install bash-language-server --classic
 
 # coc-pyrightの設定
 
+# tmux環境下でカラースキームを使用するための設定
+echo 'set-option -sa terminal-overrides ",xterm*:Tc"' >> ~/.tmux.conf
