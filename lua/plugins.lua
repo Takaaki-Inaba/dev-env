@@ -104,9 +104,9 @@ require("lazy").setup({
 	{"HiPhish/rainbow-delimiters.nvim"},
 	{"jackguo380/vim-lsp-cxx-highlight"},
 	{
-			"davvid/telescope-git-grep.nvim",
-			branch = "main"
-	},                              
+		"davvid/telescope-git-grep.nvim",
+		branch = "main"
+	},
 })
 
 vim.cmd("let g:lightline = { 'colorscheme': 'moonfly' }")
@@ -193,7 +193,7 @@ vim.keymap.set('n', '<leader>r', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>h', builtin.oldfiles, {})
 require('telescope').load_extension('git_grep')
 vim.keymap.set('n', '<leader>g', function()
-    require('git_grep').grep()
+	require('git_grep').grep()
 end)
 
 -- toggletermの設定
@@ -312,13 +312,13 @@ require('gitsigns').setup {
 			if vim.wo.diff then return ']c' end
 			vim.schedule(function() gs.next_hunk() end)
 			return '<Ignore>'
-		end, {expr=true})
+			end, {expr=true})
 
 		map('n', '[c', function()
 			if vim.wo.diff then return '[c' end
 			vim.schedule(function() gs.prev_hunk() end)
 			return '<Ignore>'
-		end, {expr=true})
+			end, {expr=true})
 
 		-- Actions
 		map('v', '<leader>gr', function() gs.reset_hunk {vim.fn.line('.'), vim.fn.line('v')} end)
@@ -347,14 +347,14 @@ vim.keymap.set("n", "<space>rf", "<Plug>(coc-references)", {silent = true})
 
 -- スペースhでHover
 function _G.show_docs()
-    local cw = vim.fn.expand('<cword>')
-    if vim.fn.index({'vim', 'help'}, vim.bo.filetype) >= 0 then
-        vim.api.nvim_command('h ' .. cw)
-    elseif vim.api.nvim_eval('coc#rpc#ready()') then
-        vim.fn.CocActionAsync('doHover')
-    else
-        vim.api.nvim_command('!' .. vim.o.keywordprg .. ' ' .. cw)
-    end
+	local cw = vim.fn.expand('<cword>')
+	if vim.fn.index({'vim', 'help'}, vim.bo.filetype) >= 0 then
+		vim.api.nvim_command('h ' .. cw)
+	elseif vim.api.nvim_eval('coc#rpc#ready()') then
+		vim.fn.CocActionAsync('doHover')
+	else
+		vim.api.nvim_command('!' .. vim.o.keywordprg .. ' ' .. cw)
+	end
 end
 vim.keymap.set("n", "<space>h", '<CMD>lua _G.show_docs()<CR>', {silent = true})
 -- スペースfmでコードをformatting
