@@ -1,6 +1,9 @@
 {
     "coc.preferences.useQuickfixForLocations": "true",
 	"diagnostic.enable": false,
+	"semanticTokens.enable": true,                   
+    "semanticTokens.filetypes": ["*"],               
+    "coc.preferences.semanticTokensHighlights": true,
 
     "languageserver": {
 		"clangd": {
