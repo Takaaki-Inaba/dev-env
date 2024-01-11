@@ -1,6 +1,7 @@
 #!/bin/bash
 
-sudo apt install ripgrep fd-find shellcheck g++
+# ubuntu20.04はfzfが古いので、githubから直接バイナリを持ってこないといけない
+sudo apt install ripgrep fd-find shellcheck g++ fzf
 
 # ubuntu20.04であればclangdが古いので、apt install clangd-12として、clangdへのシンボリックリンクを作る
 sudo apt install clangd
@@ -18,9 +19,8 @@ cp dev-env/coc-settings.json ~/.config/nvim/
 cp dev-env/init.lua ~/.config/nvim/
 cp -r dev-env/lua ~/.config/nvim/
 
-
 # cocの設定
-sudo curl -sL install-node.vercel.app/lts | bash
+curl -sL install-node.vercel.app/lts | sudo bash
 # 危険なので、ローカル環境にインストールして、パスを追加するように変更
 sudo ln -s /usr/local/bin/node /usr/bin/node
 
@@ -33,3 +33,4 @@ sudo snap install bash-language-server --classic
 
 # tmux環境下でカラースキームを使用するための設定
 echo 'set-option -sa terminal-overrides ",xterm*:Tc"' >> ~/.tmux.conf
+

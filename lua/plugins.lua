@@ -61,6 +61,15 @@ require("lazy").setup({
 		tag = "0.1.5",
 		dependencies = { 'nvim-lua/plenary.nvim' },
 	},
+	{
+		"ibhagwan/fzf-lua",
+		-- optional for icon support
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		config = function()
+			-- calling `setup` is optional for customization
+			require("fzf-lua").setup({})
+		end
+	},
 	{"RRethy/vim-illuminate"},
 	{'akinsho/toggleterm.nvim', version = "*", config = true},
 	{
@@ -96,7 +105,6 @@ require("lazy").setup({
 
 			-- Only one of these is needed, not both.
 			"nvim-telescope/telescope.nvim", -- optional
-			"ibhagwan/fzf-lua",              -- optional
 		},
 		config = true
 	},
@@ -188,13 +196,18 @@ require("telescope").setup({
 })
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>f', builtin.find_files, {})
-vim.keymap.set('n', '<leader>r', builtin.live_grep, {})
--- vim.keymap.set('n', '<leader>g', builtin.grep_string, {})
+--vim.keymap.set('n', '<leader>r', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>h', builtin.oldfiles, {})
 require('telescope').load_extension('git_grep')
 vim.keymap.set('n', '<leader>g', function()
 	require('git_grep').grep()
 end)
+vim.keymap.set('n', '<leader>q', builtin.quickfixhistory, {})
+
+-- telescopeのlive grepはfuzzy検索できないので、live grepのみfzfを使用する
+--vim.keymap.set("n", "<leader>g","<cmd>lua require('fzf-lua').grep_cword()<CR>", { silent = true })
+vim.keymap.set("n", "<leader>r","<cmd>lua require('fzf-lua').grep_project()<CR>", { silent = true })
+
 
 -- toggletermの設定
 vim.keymap.set('n', '<leader><space>t', ':ToggleTerm size=20 direction=horizontal<CR>')
