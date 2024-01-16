@@ -132,7 +132,10 @@ require("nvim-tree").setup({
 			"$\\.o",
 			"^\\.git",
 			"^\\.github",
-			"$\\.bak"
+			"$\\.bak",
+			"^\\.cache",
+			"^\\.ccls-cache",
+			"^\\.clangd",
 		},
 	},
 	tab = {
