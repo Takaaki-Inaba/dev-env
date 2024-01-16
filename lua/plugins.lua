@@ -334,9 +334,9 @@ require('gitsigns').setup {
 			end, {expr=true})
 
 		-- Actions
-		map('v', '<leader>gr', function() gs.reset_hunk {vim.fn.line('.'), vim.fn.line('v')} end)
-		map('n', '<leader>gr', gs.reset_hunk)
-		map('n', '<leader>gp', gs.preview_hunk)
+		map('v', '<leader><space>r', function() gs.reset_hunk {vim.fn.line('.'), vim.fn.line('v')} end)
+		map('n', '<leader><space>r', gs.reset_hunk)
+		map('n', '<leader><space>p', gs.preview_hunk)
 	end
 }
 
