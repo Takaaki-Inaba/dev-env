@@ -115,6 +115,7 @@ require("lazy").setup({
 		"davvid/telescope-git-grep.nvim",
 		branch = "main"
 	},
+	{"FabijanZulj/blame.nvim"},
 })
 
 vim.cmd("let g:lightline = { 'colorscheme': 'moonfly' }")
@@ -340,8 +341,12 @@ require('gitsigns').setup {
 		map('v', '<leader><space>r', function() gs.reset_hunk {vim.fn.line('.'), vim.fn.line('v')} end)
 		map('n', '<leader><space>r', gs.reset_hunk)
 		map('n', '<leader><space>p', gs.preview_hunk)
+		map('n', '<leader><space>b', gs.toggle_current_line_blame)
 	end
 }
+
+-- blameの設定                                                    
+vim.keymap.set('n', '<leader><space>B', ':ToggleBlame window<CR>')
 
 -- neogitの設定
 vim.keymap.set('n', '<leader><space>s', ':Neogit kind=split<CR>')
