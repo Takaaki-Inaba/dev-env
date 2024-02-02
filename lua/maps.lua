@@ -61,6 +61,7 @@ aug END
 
 -- vimgrepをrgにする
 -- :vimgrepだとvimgrepでの検索になるので、:grepで検索すること
-vim.cmd("let &grepprg='rg --vimgrep'")
+-- vim.cmd("let &grepprg='rg --vimgrep'")
+vim.cmd("let &grepprg='git grep -I --line-number'")
 
 
