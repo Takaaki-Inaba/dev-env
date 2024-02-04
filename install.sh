@@ -30,6 +30,7 @@ sudo ln -s /usr/local/bin/node /usr/bin/node
 sudo snap install bash-language-server --classic
 
 # coc-pyrightの設定
+# nvim開いて、:CocInstall coc-pyright
 
 # tmux環境下でカラースキームを使用するための設定
 echo 'set-option -sa terminal-overrides ",xterm*:Tc"' >> ~/.tmux.conf
