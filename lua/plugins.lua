@@ -13,46 +13,38 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	{"thinca/vim-qfreplace", lazy = false},
-	{
-		"nvim-treesitter/nvim-treesitter",
-		build = ":TSUpdate",
-		config = function ()
-			local configs = require("nvim-treesitter.configs")
-
-			configs.setup({
-				ensure_installed = {
-					"c",
-					"lua",
-					"vim",
-					"vimdoc",
-					"query",
-					"go",
-					"bash",
-					"cpp",
-					"html",
-					"cmake",
-					"make",
-					"markdown",
-					"python",
-					"yaml",
-					"toml"
-				},
-				sync_install = false,
-				highlight = { enable = true },
-				indent = { enable = true },
-			})
-		end
-	},
 	{"nvim-tree/nvim-web-devicons"},
 	{
 		"nvim-tree/nvim-tree.lua",
 		version = "*",
-		lazy = false,
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
 		},
 		config = function()
-			require("nvim-tree").setup {}
+			require("nvim-tree").setup {
+				filters = {
+					custom = {
+						"^\\.git",
+						"^\\.github",
+						".bak$",
+						"^\\.cache",
+						"^\\.ccls-cache",
+						"^\\.clangd",
+						".cmd$",
+						".mod$",
+						".ko$",
+						".o$",
+						".a$",
+					},
+					dotfiles = true,
+				},
+				tab = {
+					sync = {
+						open = true,
+						close = true,
+					},
+				}
+			}
 		end
 	},
 	{ "bluz71/vim-moonfly-colors", name = "moonfly", lazy = false, priority = 1000 },
@@ -116,6 +108,36 @@ require("lazy").setup({
 		branch = "main"
 	},
 	{"FabijanZulj/blame.nvim"},
+	-- {
+	-- 	"nvim-treesitter/nvim-treesitter",
+	-- 	build = ":TSUpdate",
+	-- 	config = function ()
+	-- 		local configs = require("nvim-treesitter.configs")
+	--
+	-- 		configs.setup({
+	-- 			ensure_installed = {
+	-- 				"c",
+	-- 				"lua",
+	-- 				"vim",
+	-- 				"vimdoc",
+	-- 				"query",
+	-- 				"go",
+	-- 				"bash",
+	-- 				"cpp",
+	-- 				"html",
+	-- 				"cmake",
+	-- 				"make",
+	-- 				"markdown",
+	-- 				"python",
+	-- 				"yaml",
+	-- 				"toml"
+	-- 			},
+	-- 			sync_install = false,
+	-- 			highlight = { enable = true },
+	-- 			indent = { enable = true },
+	-- 		})
+	-- 	end
+	-- },
 })
 
 vim.cmd("let g:lightline = { 'colorscheme': 'moonfly' }")
@@ -123,29 +145,6 @@ vim.g.moonflyItalics = false
 vim.g.moonflyVirtualTextColor = true
 vim.g.moonflyCursorColor = true
 vim.cmd [[colorscheme moonfly]]
-
--- C-tでタブで開く
--- C-vでvertical open
--- C-xでsplit open
-require("nvim-tree").setup({
-	filters = {
-		custom = {
-			"$\\.o",
-			"^\\.git",
-			"^\\.github",
-			"$\\.bak",
-			"^\\.cache",
-			"^\\.ccls-cache",
-			"^\\.clangd",
-		},
-	},
-	tab = {
-		sync = {
-			open = true,
-			close = true,
-		},
-	},
-})
 
 -- nvim-treeでwindowsが最後になった場合に自動でcloseするための設定
 local function tab_win_closed(winnr)
@@ -182,6 +181,10 @@ vim.api.nvim_create_autocmd("WinClosed", {
 	end,
 	nested = true
 })
+
+-- C-tでタブで開く
+-- C-vでvertical open
+-- C-xでsplit open
 -- nvim-treeをopen
 vim.keymap.set('n', '<C-n>', ':NvimTreeToggle<CR>')
 
@@ -345,7 +348,7 @@ require('gitsigns').setup {
 	end
 }
 
--- blameの設定                                                    
+-- blameの設定
 vim.keymap.set('n', '<leader><space>B', ':ToggleBlame window<CR>')
 
 -- neogitの設定
@@ -383,6 +386,4 @@ vim.keymap.set("n", "<space>fm", "<Plug>(coc-format-selected)", {silent = true})
 
 -- スペースdでdiagnosticを有効化
 vim.keymap.set("n", "<space>d", ":<C-u>call CocAction('diagnosticToggle')<CR>", {silent = true})
-
-
 
