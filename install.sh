@@ -14,10 +14,9 @@ echo 'alias vi="/home/${USER}/workspace/oss/nvim-linux64/bin/nvim"' >> ~/.bash_a
 rm nvim-linux64.tar.gz
 
 mkdir -p ~/.config/nvim
-git clone https://github.com/Takaaki-Inaba/dev-env.git
-cp dev-env/coc-settings.json ~/.config/nvim/
-cp dev-env/init.lua ~/.config/nvim/
-cp -r dev-env/lua ~/.config/nvim/
+cp coc-settings.json ~/.config/nvim/
+cp init.lua ~/.config/nvim/
+cp -r lua ~/.config/nvim/
 
 # cocの設定
 curl -sL install-node.vercel.app/lts | sudo bash
