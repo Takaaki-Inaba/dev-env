@@ -368,6 +368,8 @@ vim.keymap.set("n", "<space>k", "<C-o>", {silent = true})
 vim.keymap.set("n", "<space>de", "<Plug>(coc-type-definition)", {silent = true})
 vim.keymap.set("n", "<space>im", "<Plug>(coc-implementation)", {silent = true})
 vim.keymap.set("n", "<space>rf", "<Plug>(coc-references)", {silent = true})
+-- スペースgaでマクロ展開
+vim.keymap.set("n", "<space>ga", "<Plug>(coc-codeaction-cursor)", {silent = true})
 
 -- スペースhでHover
 function _G.show_docs()
