@@ -10,6 +10,7 @@ wget https://github.com/neovim/neovim/releases/download/v0.9.5/nvim-linux64.tar.
 tar xf nvim-linux64.tar.gz
 echo 'alias vi="/home/${USER}/workspace/oss/nvim-linux64/bin/nvim"' >> ~/.bash_aliases
 rm nvim-linux64.tar.gz
+cd -
 
 mkdir -p ~/.config/nvim
 cp coc-settings.json ~/.config/nvim/
