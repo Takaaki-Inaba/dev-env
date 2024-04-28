@@ -1,10 +1,8 @@
 #!/bin/bash
 
 # ubuntu20.04はfzfが古いので、githubから直接バイナリを持ってこないといけない
-sudo apt install ripgrep fd-find shellcheck g++ fzf
-
 # ubuntu20.04であればclangdが古いので、apt install clangd-12として、clangdへのシンボリックリンクを作る
-sudo apt install clangd
+sudo apt -y install ripgrep fd-find shellcheck g++ fzf clangd
 
 mkdir -p ~/workspace/oss
 cd ~/workspace/oss
