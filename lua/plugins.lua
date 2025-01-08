@@ -315,9 +315,6 @@ require('gitsigns').setup {
 		row = 0,
 		col = 1
 	},
-	yadm = {
-		enable = false
-	},
 	on_attach = function(bufnr)
 		local gs = package.loaded.gitsigns
 
@@ -344,12 +341,34 @@ require('gitsigns').setup {
 		map('v', '<leader><space>r', function() gs.reset_hunk {vim.fn.line('.'), vim.fn.line('v')} end)
 		map('n', '<leader><space>r', gs.reset_hunk)
 		map('n', '<leader><space>p', gs.preview_hunk)
-		map('n', '<leader><space>b', gs.toggle_current_line_blame)
+		--map('n', '<leader><space>b', gs.toggle_current_line_blame)
 	end
 }
+--vim.keymap.set('n', '<leader><space>B', ':ToggleBlame window<CR>')
 
 -- blameの設定
-vim.keymap.set('n', '<leader><space>B', ':ToggleBlame window<CR>')
+require('blame').setup {
+    date_format = "%Y-%m-%d",
+    virtual_style = "right_align",
+    views = {
+        window = window_view,
+        virtual = virtual_view,
+        default = window_view,
+    },
+    focus_blame = true,
+    merge_consecutive = false,
+    max_summary_width = 30,
+    colors = nil,
+    blame_options = nil,
+    commit_detail_view = "tab",
+    mappings = {
+        commit_info = "i",
+        stack_push = "<leader>j",
+        stack_pop = "<leader>k",
+        show_commit = "<CR>",
+    },
+}
+vim.keymap.set('n', '<leader><space>b', ':BlameToggle <CR>')
 
 -- neogitの設定
 vim.keymap.set('n', '<leader><space>s', ':Neogit kind=split<CR>')
@@ -368,8 +387,8 @@ vim.keymap.set("n", "<space>k", "<C-o>", {silent = true})
 vim.keymap.set("n", "<space>de", "<Plug>(coc-type-definition)", {silent = true})
 vim.keymap.set("n", "<space>im", "<Plug>(coc-implementation)", {silent = true})
 vim.keymap.set("n", "<space>rf", "<Plug>(coc-references)", {silent = true})
--- スペースgaでマクロ展開
 vim.keymap.set("n", "<space>ga", "<Plug>(coc-codeaction-cursor)", {silent = true})
+
 
 -- スペースhでHover
 function _G.show_docs()
