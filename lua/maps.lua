@@ -31,7 +31,8 @@ keymap.set('', '<C-k>', '<C-y>')
 keymap.set('i', 'jj', '<ESC>', { silent = true })
 
 -- 画面分割ショートカット
-keymap.set('n', '<leader>t', ':tabnew<CR>')
+vim.cmd("command! TabNewSameFile execute 'tabnew % | normal! ' . line('.') . 'G' . 'zz'")
+keymap.set('n', '<leader>t', ':TabNewSameFile<CR>')
 keymap.set('n', '<leader>v', ':vsplit<CR>')
 keymap.set('n', '<leader>s', ':split<CR>')
 
