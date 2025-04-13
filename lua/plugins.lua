@@ -32,6 +32,7 @@ require("lazy").setup({
 						"^\\.clangd",
 						".cmd$",
 						".mod$",
+						".mod.c$",
 						".ko$",
 						".o$",
 						".a$",
