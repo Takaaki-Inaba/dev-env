@@ -4,6 +4,7 @@
 	"semanticTokens.enable": true,
 	"semanticTokens.filetypes": ["*"],
 	"coc.preferences.semanticTokensHighlights": true,
+	"inlayHint.enable":false,
 
 	"languageserver": {
 		"clangd": {
