@@ -22,8 +22,6 @@ curl -sL install-node.vercel.app/lts | sudo bash
 # 危険なので、ローカル環境にインストールして、パスを追加するように変更
 sudo ln -s /usr/local/bin/node /usr/bin/node
 
-# nvim開いて、:CocInstall coc-clangd
-
 # coc-bashに必要なプラグイン
 sudo snap install bash-language-server --classic
 
