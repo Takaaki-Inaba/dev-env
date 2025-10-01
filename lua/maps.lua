@@ -60,9 +60,23 @@ aug QFClose
 aug END
 ]])
 
--- vimgrepをrgにする
 -- :vimgrepだとvimgrepでの検索になるので、:grepで検索すること
--- vim.cmd("let &grepprg='rg --vimgrep'")
 vim.cmd("let &grepprg='git grep -I --line-number'")
 
+-- :Rgコマンドでripgrepで検索
+vim.api.nvim_create_user_command(
+  'Rg',
+  function(opts)
+    local command = 'rg --vimgrep ' .. vim.fn.shellescape(opts.args)
+    local result = vim.fn.systemlist(command)
+    vim.fn.setqflist({}, 'r', { lines = result, title = 'rg: ' .. opts.args })
+    vim.cmd('copen')
+    vim.cmd('cfirst')
+  end,
+  {
+    nargs = '+',
+    complete = 'file',
+    bar = true,
+  }
+)
 
