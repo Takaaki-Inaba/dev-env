@@ -22,12 +22,5 @@ curl -sL install-node.vercel.app/lts | sudo bash
 # 危険なので、ローカル環境にインストールして、パスを追加するように変更
 sudo ln -s /usr/local/bin/node /usr/bin/node
 
-# coc-bashに必要なプラグイン
-sudo snap install bash-language-server --classic
-
-# coc-pyrightの設定
-# nvim開いて、:CocInstall coc-pyright
-
 # tmux環境下でカラースキームを使用するための設定
 echo 'set-option -sa terminal-overrides ",xterm*:Tc"' >> ~/.tmux.conf
-
