@@ -36,8 +36,8 @@ keymap.set('n', '<leader>t', ':TabNewSameFile<CR>')
 keymap.set('n', '<leader>v', ':vsplit<CR>')
 keymap.set('n', '<leader>s', ':split<CR>')
 
--- make とか grep のあとに quickfix に移動する
-vim.cmd("autocmd QuickfixCmdPost make,*grep*,grepadd,vimgrep cwindow")
+-- grep のあとに quickfix に移動する
+vim.opt.grepprg = "rg --vimgrep"
 keymap.set('', '<C-c>', ':cnext<CR>')
 keymap.set('', '<C-s>', ':cprevious<CR>')
 keymap.set('', '<C-q>', ':cclose<CR>')
@@ -59,24 +59,4 @@ aug QFClose
   au WinEnter * if winnr('$') == 1 && &buftype == "quickfix"|q|endif
 aug END
 ]])
-
--- :vimgrepだとvimgrepでの検索になるので、:grepで検索すること
-vim.cmd("let &grepprg='git grep -I --line-number'")
-
--- :Rgコマンドでripgrepで検索
-vim.api.nvim_create_user_command(
-  'Rg',
-  function(opts)
-    local command = 'rg --vimgrep ' .. vim.fn.shellescape(opts.args)
-    local result = vim.fn.systemlist(command)
-    vim.fn.setqflist({}, 'r', { lines = result, title = 'rg: ' .. opts.args })
-    vim.cmd('copen')
-    vim.cmd('cfirst')
-  end,
-  {
-    nargs = '+',
-    complete = 'file',
-    bar = true,
-  }
-)
 
