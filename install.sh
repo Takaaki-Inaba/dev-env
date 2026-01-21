@@ -57,7 +57,7 @@ function aarch64_package_install ()
 {
 	wget https://github.com/neovim/neovim/releases/download/v0.11.5/nvim-linux-arm64.tar.gz
 	tar xf nvim-linux-arm64.tar.gz
-	echo 'alias vi="/home/${USER}/workspace/oss/nvim-linux-/arm64/bin/nvim"' >> ~/.bash_aliases
+	echo 'alias vi="/home/${USER}/workspace/oss/nvim-linux-arm64/bin/nvim"' >> ~/.bash_aliases
 	rm nvim-linux-arm64.tar.gz
 }
 
