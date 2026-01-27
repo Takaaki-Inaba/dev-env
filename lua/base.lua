@@ -48,3 +48,14 @@ vim.api.nvim_create_autocmd("FileType", {
 	command = "setlocal shiftwidth=2 tabstop=2"
 })
 
+-- ファイルを閉じるときにビュー（折りたたみ等）を保存
+vim.api.nvim_create_autocmd("BufWinLeave", {         
+  pattern = "*.*",                                   
+  command = "mkview",                                
+})                                                   
+                                                     
+-- ファイルを開いたときにビューを復元                
+vim.api.nvim_create_autocmd("BufReadPost", {         
+  pattern = "*.*",                                   
+  command = "silent! loadview",                      
+})                                                   
