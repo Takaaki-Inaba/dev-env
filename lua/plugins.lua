@@ -342,6 +342,11 @@ require('blame').setup {
 }
 vim.keymap.set('n', '<leader><space>b', ':BlameToggle <CR>')
 
+-- git-fugitive                          
+-- blame windowで-で履歴をさかのぼる     
+-- blame windowでOでタブでcommit logを表示
+-- blame windowでCでshort表示にする      
+
 -- neogitの設定
 vim.keymap.set('n', '<leader><space>s', ':Neogit kind=split<CR>')
 
