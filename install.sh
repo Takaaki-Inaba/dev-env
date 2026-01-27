@@ -97,6 +97,9 @@ function main ()
 	# tmux環境下でカラースキームを使用するための設定
 	echo 'set-option -sa terminal-overrides ",xterm*:Tc"' >> ~/.tmux.conf
 
+	# blameの日付部分の調整
+	git config --global blame.date format:%Y-%m-%d
+
 	echo "install complete"
 }
 
