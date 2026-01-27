@@ -109,6 +109,7 @@ require("lazy").setup({
 		branch = "main"
 	},
 	{"FabijanZulj/blame.nvim"},
+	{"tpope/vim-fugitive"},
 })
 
 vim.cmd("let g:lightline = { 'colorscheme': 'moonfly' }")
