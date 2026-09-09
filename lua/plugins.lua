@@ -14,40 +14,44 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	{"thinca/vim-qfreplace", lazy = false},
 	{"nvim-tree/nvim-web-devicons"},
-	{
-		"nvim-tree/nvim-tree.lua",
-		version = "*",
-		dependencies = {
-			"nvim-tree/nvim-web-devicons",
-		},
-		config = function()
-			require("nvim-tree").setup {
-				filters = {
-					custom = {
-						"^\\.git",
-						"^\\.github",
-						".bak$",
-						"^\\.cache",
-						"^\\.ccls-cache",
-						"^\\.clangd",
-						".cmd$",
-						".mod$",
-						".mod.c$",
-						".ko$",
-						".o$",
-						".a$",
-					},
-					dotfiles = true,
-				},
-				tab = {
-					sync = {
-						open = true,
-						close = true,
-					},
-				}
-			}
-		end
-	},
+    {                                     
+        "nvim-tree/nvim-tree.lua",        
+        version = "*",                    
+        dependencies = {                  
+            "nvim-tree/nvim-web-devicons",
+        },                                
+        config = function()               
+            require("nvim-tree").setup {  
+                git = {                   
+                    enable = true,        
+                    timeout = 5000,       
+                },                        
+                                          
+                filters = {               
+                    enable = true,        
+                    git_ignored = true,   
+                                          
+                    custom = {            
+                        "^\\.git",        
+                        "^\\.github",     
+                        ".bak$",          
+                        "^\\.cache",      
+                        "^\\.ccls-cache", 
+                        "^\\.clangd",     
+                    },                    
+                                          
+                    dotfiles = true,      
+                },                        
+                                          
+                tab = {                   
+                    sync = {              
+                        open = true,      
+                        close = true,     
+                    },                    
+                },                        
+            }                             
+        end                               
+    },                                    
 	{ "bluz71/vim-moonfly-colors", name = "moonfly", lazy = false, priority = 1000 },
 	{
 		"nvim-telescope/telescope.nvim",
